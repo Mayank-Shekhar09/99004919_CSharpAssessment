@@ -10,16 +10,22 @@ namespace ProblemThree_CompleteSolution_BL
     {
         public double TotalBillValue { get; set; }
 
-        public override double PayPerPiece(int quantity)
+        public override double PayPerPiece(int quantity, string itemName)
         {
             foreach (KeyValuePair<int, double> price in ItemPrice) {
                 TotalBillValue = (quantity * price.Key) + (quantity * price.Value);
                     }
+            TotalBillValue *= (1 + TaxOnTotalBill());
             return TotalBillValue;
         }
-        public override double PayPerWeight(int weight)
+        public override double PayPerWeight(int weight, string itemName)
         {
-
+            weight /= 1000;
+            foreach (KeyValuePair<int, double> price in ItemPrice)
+            {
+                TotalBillValue = (weight * price.Key) + (weight * price.Value);
+            }
+            TotalBillValue *= (1 + TaxOnTotalBill());
             return TotalBillValue;
         }
 

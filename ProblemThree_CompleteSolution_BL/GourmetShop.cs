@@ -8,8 +8,8 @@ namespace ProblemThree_CompleteSolution_BL
 {
     public abstract class GourmetShop
     {          
-        public abstract double PayPerPiece(int quantity);
-        public abstract double PayPerWeight(int weight);
+        public abstract double PayPerPiece(int quantity, string itemName);
+        public abstract double PayPerWeight(int weight, string itemName);
 
         public int ItemCode { get; set; }
         public string ItemName { get; set; }
